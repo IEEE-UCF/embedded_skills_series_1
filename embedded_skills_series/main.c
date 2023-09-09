@@ -16,7 +16,7 @@ void main(void) {
     config_ACLK_to_32KHz();                     // configure timer source
 
     // Configure timer A
-    TA0CCR0 |= _______; // counter
+    TA0CCR0 |= 10000; // counter
     TA0CCTL0 |= CCIE; // enable CCIE bit
     TA0CCTL0 &= ~CCIFG;  // clear CCIFG bit
 
@@ -32,6 +32,6 @@ void main(void) {
 #pragma vector = TIMER0_A0_VECTOR // Link the ISR to the vector
 
 __interrupt void T0A0_ISR() {
-    P1OUT __ red_LED;
-    P9OUT __ green_LED;
+    P1OUT ^= red_LED;
+    P9OUT ^= green_LED;
 }
